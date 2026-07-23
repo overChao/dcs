@@ -1,6 +1,9 @@
 package com.crodi.model.graph;
 
+import com.crodi.model.Base;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @Author: crodi.zhang
@@ -9,10 +12,11 @@ import lombok.Data;
  **/
 
 @Data
-public class Warehouse {
+@EqualsAndHashCode(callSuper = true)
+public class Warehouse extends Base {
 
     private String wareHouseId;
 
-    private String description;
+    private String wareHouseName;
 
 }

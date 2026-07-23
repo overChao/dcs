@@ -18,7 +18,7 @@ public class Map extends Warehouse {
     private String mapCode;
 
     // 图名称
-    private String description;
+    private String mapName;
 
     // 层id
     private String layerCode;
