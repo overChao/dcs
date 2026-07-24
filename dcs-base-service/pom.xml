@@ -13,6 +13,17 @@
 	<description>dcs-base-service</description>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.crodi</groupId>
+			<artifactId>dcs-base-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+		</dependency>
+
 	</dependencies>
 
 

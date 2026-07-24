@@ -13,9 +13,11 @@
 	<description>dcs-starter</description>
 
 	<dependencies>
+
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<groupId>com.crodi</groupId>
+			<artifactId>dcs-web</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
