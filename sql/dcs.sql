@@ -74,7 +74,30 @@ create table dcs_edge
     updated_by   varchar(32) default 'admin'           not null comment '更新人',
     updated_time datetime    default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
     is_deleted   char        default '0'               not null comment '删除标志'
-) comment '边' row_format = Dynamic
+) comment '边' row_format = DYNAMIC;
+
+create table dcs_container
+(
+    id             int auto_increment comment '主键标识'
+        primary key,
+
+    container_code varchar(32)                           not null comment '容器编码',
+    node_code      varchar(32)                           not null comment '节点编码',
+    map_code       varchar(32)                           not null comment '地图编码',
+
+    device_code    varchar(32) default -1                not null comment '设备编码',
+    length         varchar(32) default -1                not null comment '长',
+    width          varchar(32) default -1                not null comment '宽',
+    height         varchar(32) default -1                not null comment '高',
+    weight         varchar(32) default -1                not null comment '重量',
+
+    is_active      char        default '1'               not null comment '是否激活',
+    created_by     varchar(32) default 'admin'           not null comment '创建人',
+    created_time   datetime    default CURRENT_TIMESTAMP not null comment '创建时间',
+    updated_by     varchar(32) default 'admin'           not null comment '更新人',
+    updated_time   datetime    default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    is_deleted     char        default '0'               not null comment '删除标志'
+) comment '容器' row_format = DYNAMIC;
 
 
 

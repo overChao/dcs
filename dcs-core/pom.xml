@@ -8,20 +8,10 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>dcs-common</artifactId>
+	<artifactId>dcs-core</artifactId>
 
-	<name>dcs-common</name>
-	<description>dcs-common</description>
-
-	<dependencies>
-
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-annotation</artifactId>
-			<version>3.5.14</version>
-			<scope>compile</scope>
-		</dependency>
-	</dependencies>
+	<name>dcs-core</name>
+	<description>dcs-core</description>
 
 
 </project>

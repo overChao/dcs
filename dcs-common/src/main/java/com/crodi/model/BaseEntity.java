@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Base {
+public class BaseEntity {
 
     private String createBy;
 

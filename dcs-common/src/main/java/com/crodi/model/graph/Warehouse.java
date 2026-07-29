@@ -1,6 +1,6 @@
 package com.crodi.model.graph;
 
-import com.crodi.model.Base;
+import com.crodi.model.BaseEntity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Warehouse extends Base {
+public class Warehouse extends BaseEntity {
 
     private String wareHouseId;
 
