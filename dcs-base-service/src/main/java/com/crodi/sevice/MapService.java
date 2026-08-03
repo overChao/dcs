@@ -1,7 +1,9 @@
 package com.crodi.sevice;
 
 import com.crodi.base.MapApi;
+import com.crodi.mapper.MapMapper;
 import com.crodi.model.graph.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +14,10 @@ import java.util.List;
  * @Description: TODO
  **/
 @Service
+@RequiredArgsConstructor
 public class MapService implements MapApi {
+
+    private final MapMapper mapMapper;
 
     @Override
     public List<Map> getWarehouseMap() {
