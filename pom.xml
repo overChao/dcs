@@ -21,9 +21,7 @@
     <modules>
         <module>dcs-web</module>
         <module>dcs-common</module>
-        <module>dcs-base-service</module>
-        <module>dcs-base-api</module>
-        <module>dcs-task-service</module>
+        <module>dcs-base</module>
         <module>dcs-core</module>
         <module>dcs-starter</module>
     </modules>

@@ -9,9 +9,11 @@
 	</parent>
 
 	<artifactId>dcs-core</artifactId>
+	<packaging>pom</packaging>
 
-	<name>dcs-core</name>
-	<description>dcs-core</description>
 
+	<modules>
+		<module>dcs-task-service</module>
+	</modules>
 
 </project>
