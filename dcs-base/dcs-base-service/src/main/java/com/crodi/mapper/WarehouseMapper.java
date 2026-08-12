@@ -1,15 +1,15 @@
 package com.crodi.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.crodi.model.graph.Map;
+import com.crodi.model.graph.Warehouse;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @Author: crodi.zhang
- * @Date: 2026/7/24 13:24
+ * @Date: 2026/8/12 16:51
  * @Description: TODO
  **/
 @Mapper
-public interface MapMapper extends BaseMapper<Map> {
+public interface WarehouseMapper extends BaseMapper<Warehouse> {
 
 }

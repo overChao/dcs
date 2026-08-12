@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  **/
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Node extends Map {
 
     // 点位编码

@@ -24,6 +24,8 @@
         <module>dcs-base</module>
         <module>dcs-core</module>
         <module>dcs-starter</module>
+        <module>dcs-simulator</module>
+        <module>dcs-core/dcs-map-service</module>
     </modules>
 
     <dependencies>
@@ -35,6 +37,11 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
 
     </dependencies>
@@ -107,6 +114,12 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.23</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>33.6.0-jre</version>
             </dependency>
 
         </dependencies>

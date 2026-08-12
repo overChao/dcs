@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Map extends Warehouse {
 
     // 图编码
@@ -22,5 +22,10 @@ public class Map extends Warehouse {
 
     // 层id
     private String layerCode;
+
+    public Map(String mapCode, String layerCode) {
+        this.mapCode = mapCode;
+        this.layerCode = layerCode;
+    }
 
 }

@@ -7,7 +7,7 @@ create table dcs_warehouse
     warehouse_id   varchar(32)                           not null comment '仓库id',
     warehouse_name varchar(32)                           null comment '仓库名称',
 
-    is_active      char        default '1'               not null comment '是否激活',
+    is_active      char        default '0'               not null comment '是否激活',
     created_by     varchar(32) default 'admin'           not null comment '创建人',
     created_time   datetime    default CURRENT_TIMESTAMP not null comment '创建时间',
     updated_by     varchar(32) default 'admin'           not null comment '更新人',

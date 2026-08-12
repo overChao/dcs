@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  **/
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Warehouse extends BaseEntity {
 
     private String wareHouseId;
