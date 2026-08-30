@@ -44,9 +44,37 @@ public class WarehouseService implements WarehouseApi {
     }
 
     @Override
+    public void deleteWarehouse(String warehouseId) {
+        Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
+                .eq(Warehouse::getWareHouseId, warehouseId)
+                .eq(Warehouse::isDeleted, Boolean.FALSE);
+        Warehouse warehouse = new Warehouse();
+        warehouse.setDeleted(Boolean.TRUE);
+        warehouseMapper.update(warehouse, wrapper);
+    }
+
+    @Override
     public List<Warehouse> getWarehouseList() {
         Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
                 .eq(Warehouse::isDeleted, Boolean.FALSE);
         return warehouseMapper.selectList(wrapper);
+    }
+
+    @Override
+    public Warehouse getActiveWarehouse() {
+        Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
+                .eq(Warehouse::isDeleted, Boolean.FALSE)
+                .eq(Warehouse::isActive, Boolean.TRUE);
+        List<Warehouse> warehouseList = warehouseMapper.selectList(wrapper);
+
+        if (warehouseList == null || warehouseList.isEmpty()) {
+            return null;
+        }
+
+        if (warehouseList.size() > 1) {
+            throw new IllegalArgumentException("Multiple active warehouses found");
+        }
+
+        return warehouseList.get(0);
     }
 }

@@ -2,6 +2,7 @@ package com.crodi.model.graph;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * @Author: crodi.zhang
@@ -11,6 +12,7 @@ import lombok.EqualsAndHashCode;
 
 
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class Map extends Warehouse {
 

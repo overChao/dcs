@@ -36,8 +36,10 @@ The device control system is a software application designed to manage and contr
 ## design
 
 ### 基础信息维护及管理
-1. 系统启动加载默认仓库信息，仓库信息为空，需要通过接口初始化仓库信息。
-2. 
+- 仓库管理
+1. 系统启动加载默认仓库信息，仓库信息为空，初始化默认仓库信息并激活。
+2. 允许多仓库, 通过激活字段控制是否生效，默认仓库默认激活。
+
 
 
 

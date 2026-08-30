@@ -1,7 +1,12 @@
 package com.crodi.service;
 
+import com.crodi.base.WarehouseApi;
 import com.crodi.model.graph.Map;
+import com.crodi.model.graph.Warehouse;
 import com.google.common.collect.Lists;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,8 +17,13 @@ import java.util.List;
  **/
 
 
+@Slf4j
+@Service
+@RequiredArgsConstructor
 public class MapInitService {
 
+
+    private final WarehouseApi warehouseApi;
 
     //
     //  默认前缀、 业务分区前缀、
@@ -21,6 +31,14 @@ public class MapInitService {
     //  最大层数、 5
 
     private static final String default_prefix = "MAP_";
+
+
+
+
+    public Warehouse loadWarehouse() {
+        return warehouseApi.getActiveWarehouse();
+    }
+
 
     public List<Map> initMap(String businessArea, int layerSize) {
         List<Map> mapList = Lists.newArrayList();
@@ -31,5 +49,6 @@ public class MapInitService {
         return mapList;
     }
 
+    // TODO  crodi.zhang  2026/8/20: 仓库编码和仓库名称 构造器
 
 }

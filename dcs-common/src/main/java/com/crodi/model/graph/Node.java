@@ -23,6 +23,6 @@ public class Node extends Map {
 
     private String y;
 
-    private String z;
+    private String z = super.getLayerCode();
 
 }
