@@ -12,7 +12,7 @@ import java.util.Map;
  * @Date: 2026/7/22 9:53
  * @Description: TODO
  **/
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Data
 public class BusinessTicket extends BaseEntity {
 
