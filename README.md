@@ -36,10 +36,16 @@ The device control system is a software application designed to manage and contr
 ## design
 
 ### 基础信息维护及管理
+- 项目管理
+1. 项目编码唯一，项目名称唯一,项目描述可选。
+2. 项目下可以有多个仓库
+3. 
+
+
 - 仓库管理
 1. 系统启动加载默认仓库信息，仓库信息为空，初始化默认仓库信息并激活。
 2. 允许多仓库, 通过激活字段控制是否生效，默认仓库默认激活。
-
+3. 仓库初始化, 
 
 
 
