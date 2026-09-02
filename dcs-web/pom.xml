@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.crodi</groupId>
-            <artifactId>dcs-base-service</artifactId>
+            <artifactId>dcs-base-api</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>

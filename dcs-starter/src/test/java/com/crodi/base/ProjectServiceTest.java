@@ -1,7 +1,6 @@
 package com.crodi.base;
 
 import com.crodi.model.Project;
-import com.crodi.sevice.ProjectService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class ProjectServiceTest {
 
 
     @Autowired
-    private ProjectService projectService;
+    private ProjectApi projectApi;
 
 
     @Test
@@ -30,13 +29,13 @@ public class ProjectServiceTest {
         project.setProjectId("HL5174");
         project.setProjectName("华联瓷业");
 
-        projectService.createProject(project);
+        projectApi.createProject(project);
     }
 
 
     @Test
     public void testGetProject() {
-        Project project = projectService.getProject("HL5174");
+        Project project = projectApi.getProject("HL5174");
         System.out.println(project);
     }
 
@@ -46,13 +45,13 @@ public class ProjectServiceTest {
         Project project = new Project();
         project.setProjectId("HL5174");
         project.setProjectDesc("华联瓷业 314新质生产基地");
-        projectService.updateProject(project);
+        projectApi.updateProject(project);
         System.out.println(project);
     }
 
 
     @Test
     public void testDeleteProject() {
-        projectService.deleteProject("HL5174");
+        projectApi.deleteProject("HL5174");
     }
 }

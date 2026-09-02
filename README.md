@@ -49,3 +49,12 @@ The device control system is a software application designed to manage and contr
 
 
 
+
+
+- 接口设计
+1. /base/** 基础信息管理接口
+2. /task/** 任务相关
+3. 
+
+
+

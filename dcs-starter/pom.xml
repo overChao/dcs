@@ -46,7 +46,6 @@
             <groupId>com.crodi</groupId>
             <artifactId>dcs-base-service</artifactId>
             <version>${project.version}</version>
-            <scope>test</scope>
         </dependency>
 
 		<dependency>
