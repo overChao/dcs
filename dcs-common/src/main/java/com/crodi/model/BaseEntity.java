@@ -2,21 +2,24 @@ package com.crodi.model;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 @Data
 public class BaseEntity {
 
-    private String createBy;
+    private String createdBy;
 
-    private String updateBy;
+    private String updatedBy;
 
-    private Date createTime;
+    private Date createdTime;
 
-    private Date updateTime;
+    private Date updatedTime;
 
-    private boolean isActive;
+    @TableField(value = "is_active")
+    private boolean active;
 
-    private boolean isDeleted;
+    @TableField(value = "is_deleted")
+    private boolean deleted;
 
 }
