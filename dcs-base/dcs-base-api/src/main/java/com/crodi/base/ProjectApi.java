@@ -19,12 +19,20 @@ public interface ProjectApi {
     List<Project> getProjects();
 
     /**
-     * 获取项目详情
+     * 通过项目id 获取项目详情
      *
-     * @param projectId 项目编码
-     * @return 项目详情
+     * @param projectId
+     * @return
      */
     Project getProject(String projectId);
+
+    /**
+     * 获取项目详情
+     *
+     * @param req 项目实体
+     * @return 项目详情
+     */
+    Project getProject(Project req);
 
     /**
      * 创建项目

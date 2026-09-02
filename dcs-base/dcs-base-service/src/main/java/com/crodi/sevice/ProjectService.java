@@ -45,9 +45,27 @@ public class ProjectService implements ProjectApi {
 
     @Override
     public Project getProject(String projectId) {
-        Wrapper<Project> wrapper = new LambdaQueryWrapper<Project>()
-                .eq(Project::getProjectId, projectId)
+        Project project = new Project();
+        project.setProjectId(projectId);
+        return getProject(project);
+    }
+
+    @Override
+    public Project getProject(Project req) {
+
+        LambdaQueryWrapper<Project> wrapper = new LambdaQueryWrapper<Project>()
                 .eq(Project::isDeleted, Boolean.FALSE);
+
+        if (Objects.nonNull(req.getProjectId())) {
+            wrapper.eq(Project::getProjectId, req.getProjectId());
+        }
+
+        if (Objects.nonNull(req.getProjectName())) {
+            wrapper.like(Project::getProjectName, req.getProjectName());
+        }
+
+        wrapper.eq(Project::isDeleted, Boolean.FALSE);
+
         Project project = projectMapper.selectOne(wrapper);
 
         if (project == null) {
@@ -75,8 +93,13 @@ public class ProjectService implements ProjectApi {
         Wrapper<Project> wrapper = new LambdaQueryWrapper<Project>()
                 .eq(Project::getProjectId, projectId)
                 .eq(Project::isDeleted, Boolean.FALSE);
+        try {
+            projectMapper.update(project, wrapper);
+        } catch (Exception e) {
+            log.error(ExceptionConst.PROJECT_DELETE_FAILED, e);
+            throw new DcsSystemException(ExceptionConst.PROJECT_DELETE_FAILED);
+        }
 
-        projectMapper.update(project, wrapper);
     }
 
     @Override
@@ -94,6 +117,11 @@ public class ProjectService implements ProjectApi {
                 .eq(Project::getProjectId, project.getProjectId())
                 .eq(Project::isDeleted, Boolean.FALSE);
 
-        projectMapper.update(project, wrapper);
+        try {
+            projectMapper.update(project, wrapper);
+        } catch (Exception e) {
+            log.error(ExceptionConst.PROJECT_UPDATE_FAILED, e);
+            throw new DcsSystemException(ExceptionConst.PROJECT_UPDATE_FAILED);
+        }
     }
 }

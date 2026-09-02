@@ -63,5 +63,14 @@ public class ProjectManageController {
     }
 
 
+    @PostMapping("/updateProject")
+    public Result<?> updateProject(@RequestBody Project project) {
+        try {
+            projectApi.updateProject(project);
+            return Result.ok();
+        } catch (DcsSystemException e) {
+            return Result.error(e.getMessage());
+        }
+    }
 
 }
