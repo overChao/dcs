@@ -1,4 +1,4 @@
-package com.crodi.controller;
+package com.crodi.controller.base;
 
 import com.crodi.base.WarehouseApi;
 import com.crodi.exception.DcsSystemException;
