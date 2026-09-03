@@ -33,7 +33,7 @@ public class ProjectService implements ProjectApi {
     @Override
     public List<Project> getProjects() {
         Wrapper<Project> wrapper = new LambdaQueryWrapper<Project>()
-                .eq(Project::isDeleted, Boolean.FALSE);
+                .eq(Project::getDeleted, Boolean.FALSE);
         List<Project> projects = projectMapper.selectList(wrapper);
 
         if (CollectionUtils.isEmpty(projects)) {
@@ -54,7 +54,9 @@ public class ProjectService implements ProjectApi {
     public Project getProject(Project req) {
 
         LambdaQueryWrapper<Project> wrapper = new LambdaQueryWrapper<Project>()
-                .eq(Project::isDeleted, Boolean.FALSE);
+                .eq(Project::getDeleted, Boolean.FALSE);
+
+
 
         if (Objects.nonNull(req.getProjectId())) {
             wrapper.eq(Project::getProjectId, req.getProjectId());
@@ -64,7 +66,7 @@ public class ProjectService implements ProjectApi {
             wrapper.like(Project::getProjectName, req.getProjectName());
         }
 
-        wrapper.eq(Project::isDeleted, Boolean.FALSE);
+        wrapper.eq(Project::getDeleted, Boolean.FALSE);
 
         Project project = projectMapper.selectOne(wrapper);
 
@@ -92,7 +94,7 @@ public class ProjectService implements ProjectApi {
 
         Wrapper<Project> wrapper = new LambdaQueryWrapper<Project>()
                 .eq(Project::getProjectId, projectId)
-                .eq(Project::isDeleted, Boolean.FALSE);
+                .eq(Project::getDeleted, Boolean.FALSE);
         try {
             projectMapper.update(project, wrapper);
         } catch (Exception e) {
@@ -115,7 +117,7 @@ public class ProjectService implements ProjectApi {
 
         Wrapper<Project> wrapper = new LambdaUpdateWrapper<Project>()
                 .eq(Project::getProjectId, project.getProjectId())
-                .eq(Project::isDeleted, Boolean.FALSE);
+                .eq(Project::getDeleted, Boolean.FALSE);
 
         try {
             projectMapper.update(project, wrapper);

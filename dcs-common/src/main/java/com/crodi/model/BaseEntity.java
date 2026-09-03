@@ -17,9 +17,9 @@ public class BaseEntity {
     private Date updatedTime;
 
     @TableField(value = "is_active")
-    private boolean active;
+    private Boolean active;
 
     @TableField(value = "is_deleted")
-    private boolean deleted;
+    private Boolean deleted;
 
 }

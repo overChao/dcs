@@ -35,4 +35,19 @@ public interface MapApi {
     void saveWarehouseMap(Map map);
 
 
+    /**
+     * 删除仓库地图
+     *
+     * @param mapCode 地图编码
+     */
+    void deleteWarehouseMap(String mapCode);
+
+    /**
+     * 更新仓库地图
+     *
+     * @param map 地图
+     */
+    void updateWarehouseMap(Map map);
+
+
 }

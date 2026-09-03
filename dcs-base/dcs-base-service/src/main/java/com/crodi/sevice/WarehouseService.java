@@ -30,7 +30,7 @@ public class WarehouseService implements WarehouseApi {
     public Warehouse getWarehouseById(String warehouseId) {
         Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
                 .eq(Warehouse::getWarehouseId, warehouseId)
-                .eq(Warehouse::isDeleted, Boolean.FALSE);
+                .eq(Warehouse::getDeleted, Boolean.FALSE);
         try {
             Warehouse warehouse = warehouseMapper.selectOne(wrapper);
             if (warehouse == null) {
@@ -68,7 +68,7 @@ public class WarehouseService implements WarehouseApi {
 
             Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
                     .eq(Warehouse::getWarehouseId, warehouse.getWarehouseId())
-                    .eq(Warehouse::isDeleted, Boolean.FALSE);
+                    .eq(Warehouse::getDeleted, Boolean.FALSE);
 
             warehouseMapper.update(warehouse, wrapper);
         } catch (Exception e) {
@@ -83,7 +83,7 @@ public class WarehouseService implements WarehouseApi {
     public void deleteWarehouse(String warehouseId) {
         Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
                 .eq(Warehouse::getWarehouseId, warehouseId)
-                .eq(Warehouse::isDeleted, Boolean.FALSE);
+                .eq(Warehouse::getDeleted, Boolean.FALSE);
         Warehouse warehouse = new Warehouse();
         warehouse.setDeleted(Boolean.TRUE);
         try {
@@ -98,7 +98,7 @@ public class WarehouseService implements WarehouseApi {
     public List<Warehouse> getWarehouseList(String projectId) {
         Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
                 .eq(Warehouse::getProjectId, projectId)
-                .eq(Warehouse::isDeleted, Boolean.FALSE);
+                .eq(Warehouse::getDeleted, Boolean.FALSE);
         try {
             List<Warehouse> warehouseList = warehouseMapper.selectList(wrapper);
             if (warehouseList == null || warehouseList.isEmpty()) {
@@ -117,8 +117,8 @@ public class WarehouseService implements WarehouseApi {
     public Warehouse getActiveWarehouse(String projectId) {
         Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
                 .eq(Warehouse::getProjectId, projectId)
-                .eq(Warehouse::isDeleted, Boolean.FALSE)
-                .eq(Warehouse::isActive, Boolean.TRUE);
+                .eq(Warehouse::getDeleted, Boolean.FALSE)
+                .eq(Warehouse::getActive, Boolean.TRUE);
         try {
 
             List<Warehouse> warehouseList = warehouseMapper.selectList(wrapper);

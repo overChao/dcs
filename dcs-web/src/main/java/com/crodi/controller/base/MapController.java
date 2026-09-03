@@ -5,10 +5,7 @@ import com.crodi.model.graph.Map;
 import com.crodi.sys.Result;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: crodi.zhang
@@ -24,7 +21,6 @@ public class MapController {
 
     private final MapApi mapApi;
 
-
     @PostMapping("createMap")
     public Result<?> createMap(@RequestBody Map map) {
         try {
@@ -33,7 +29,35 @@ public class MapController {
         } catch (Exception e) {
             return Result.error(e.getMessage());
         }
+    }
 
+    @GetMapping("getMaps")
+    public Result<?> getMaps(@RequestParam("warehouseId") String warehouseId) {
+        try {
+            return Result.success(mapApi.getWarehouseMaps(warehouseId));
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
+
+    @GetMapping("deleteMap")
+    public Result<?> deleteMap(@RequestParam("mapCode") String mapCode) {
+        try {
+            mapApi.deleteWarehouseMap(mapCode);
+            return Result.ok();
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
+
+    @PostMapping("updateMap")
+    public Result<?> updateMaps(@RequestBody Map map) {
+        try {
+            mapApi.updateWarehouseMap(map);
+            return Result.ok();
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
     }
 
 

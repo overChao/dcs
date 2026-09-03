@@ -45,6 +45,10 @@ public interface ExceptionConst {
 
     String MAP_CODE_NOT_NULL = "地图编码不能为空";
 
+    String MAP_DELETE_FAILED = "地图删除失败";
+
+    String MAP_UPDATE_FAILED = "地图更新失败";
+
     // common
     String REQUEST_PARAM_NOT_NULL = "请求参数不能为空";
 
