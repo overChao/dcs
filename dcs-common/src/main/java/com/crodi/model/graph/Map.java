@@ -1,5 +1,7 @@
 package com.crodi.model.graph;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.crodi.model.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -7,14 +9,15 @@ import lombok.NoArgsConstructor;
 /**
  * @Author: crodi.zhang
  * @Date: 2026/7/15 11:15
- * @Description: TODO
+ * @Description: 仓库布局图
  **/
 
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Map extends Warehouse {
+@TableName("dcs_map")
+public class Map extends BaseEntity {
 
     // 图编码
     private String mapCode;
@@ -24,6 +27,9 @@ public class Map extends Warehouse {
 
     // 层id
     private String layerCode;
+
+    // 仓库id
+    private String warehouseId;
 
     public Map(String mapCode, String layerCode) {
         this.mapCode = mapCode;

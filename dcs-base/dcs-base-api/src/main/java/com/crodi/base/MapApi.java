@@ -17,17 +17,21 @@ public interface MapApi {
      *
      * @return 地图列表
      */
-    List<Map> getWarehouseMap();
+    List<Map> getWarehouseMaps(String warehouseId);
 
     /**
      * 获取仓库地图
      *
-     * @param mapId 地图ID
+     * @param mapCode 地图编码
      * @return 地图
      */
-    Map getWarehouseMap(String mapId);
+    Map getWarehouseMap(String mapCode);
 
-
+    /**
+     * 保存仓库地图
+     *
+     * @param map 地图
+     */
     void saveWarehouseMap(Map map);
 
 

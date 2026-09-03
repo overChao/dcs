@@ -2,7 +2,7 @@ package com.crodi.service;
 
 import com.crodi.base.WarehouseApi;
 import com.crodi.model.graph.Map;
-import com.crodi.model.graph.Warehouse;
+import com.crodi.model.Warehouse;
 import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +36,7 @@ public class MapInitService {
 
 
     public Warehouse loadWarehouse() {
-        return warehouseApi.getActiveWarehouse();
+        return null;
     }
 
 

@@ -36,6 +36,15 @@ public interface ExceptionConst {
     String MULTIPLE_ACTIVE_WAREHOUSE_FOUND = "存在多个激活仓库";
 
 
+    // mapManage
+    String MAP_NOT_EXIST = "地图不存在";
+
+    String MAP_SELECT_FAILED = "地图查询失败";
+
+    String MAP_CREATE_FAILED = "地图创建失败";
+
+    String MAP_CODE_NOT_NULL = "地图编码不能为空";
+
     // common
     String REQUEST_PARAM_NOT_NULL = "请求参数不能为空";
 

@@ -50,7 +50,7 @@ create table dcs_map
     warehouse_id varchar(32)                           not null comment '仓库id',
     map_code     varchar(32)                           not null comment '地图编码',
     map_name     varchar(32)                           null comment '地图名称',
-    layer_code   varchar(32)                           not null default '1' comment '地图层',
+    layer_code   varchar(32)                           not null default '1' comment '层',
 
     is_active    char        default '1'               not null comment '是否激活',
     created_by   varchar(32) default 'admin'           not null comment '创建人',

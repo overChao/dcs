@@ -1,5 +1,7 @@
 package com.crodi.model.graph;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.crodi.model.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +13,8 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Node extends Map {
+@TableName("dcs_node")
+public class Node extends BaseEntity {
 
     // 点位编码
     private String nodeCode;
@@ -23,6 +26,8 @@ public class Node extends Map {
 
     private String y;
 
-    private String z = super.getLayerCode();
+    private String z;
 
+    // 地图编码
+    private String mapCode;
 }
