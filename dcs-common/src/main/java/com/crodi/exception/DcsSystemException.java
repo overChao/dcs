@@ -12,6 +12,10 @@ public class DcsSystemException extends RuntimeException {
         super(message);
     }
 
+    public DcsSystemException(String... messages) {
+        super(String.join(",", messages));
+    }
+
 
     public DcsSystemException(String message, Throwable cause) {
         super(message, cause);

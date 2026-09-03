@@ -1,7 +1,7 @@
 package com.crodi.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.crodi.model.graph.Warehouse;
+import com.crodi.model.Warehouse;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

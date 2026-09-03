@@ -1,6 +1,6 @@
 package com.crodi.base;
 
-import com.crodi.model.graph.Warehouse;
+import com.crodi.model.Warehouse;
 
 import java.util.List;
 
@@ -45,13 +45,13 @@ public interface WarehouseApi {
      *
      * @return warehouseList
      */
-    List<Warehouse> getWarehouseList();
+    List<Warehouse> getWarehouseList(String projectId);
 
     /**
      * 获取当前激活的仓库
      *
      * @return warehouse
      */
-    Warehouse getActiveWarehouse();
+    Warehouse getActiveWarehouse(String projectId);
 
 }
