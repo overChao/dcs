@@ -1,4 +1,4 @@
-package com.crodi.sevice;
+package com.crodi.base.sevice;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -120,8 +120,8 @@ public class MapService implements MapApi {
                 wrapper.set(Map::getMapName, map.getMapName());
             }
 
-            if (Objects.nonNull(map.getLayerCode())) {
-                wrapper.set(Map::getLayerCode, map.getLayerCode());
+            if (Objects.nonNull(map.getLayerNo())) {
+                wrapper.set(Map::getLayerNo, map.getLayerNo());
             }
 
             if (Objects.nonNull(map.getActive())) {

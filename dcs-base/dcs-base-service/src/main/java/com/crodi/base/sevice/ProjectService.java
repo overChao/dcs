@@ -1,4 +1,4 @@
-package com.crodi.sevice;
+package com.crodi.base.sevice;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;

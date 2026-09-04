@@ -57,4 +57,42 @@ public class CycleCheckServiceTest {
     }
 
 
+    public static void main(String[] args) {
+
+        int i = 1;
+        int j = 2;
+
+
+    }
+
+
+    public void dynamicProgramming(int n) {
+
+        int[] choices = {1, 2};
+
+
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+
+            for (int j = 0; j < choices.length; j++) {
+                int step = i + choices[j];
+                if (step >= n) {
+                    break;
+                }
+                count++;
+            }
+
+        }
+
+
+    }
+
+
+    public void singleStep() {
+
+    }
+
+
+
+
 }

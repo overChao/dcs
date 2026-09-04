@@ -19,21 +19,25 @@ import lombok.NoArgsConstructor;
 @TableName("dcs_map")
 public class Map extends BaseEntity {
 
+    // 仓库id
+    private String warehouseId;
+
     // 图编码
     private String mapCode;
 
     // 图名称
     private String mapName;
 
-    // 层id
-    private String layerCode;
+    // 图层
+    private String layerNo;
 
-    // 仓库id
-    private String warehouseId;
+    // 楼层
+    private int floorNo;
 
-    public Map(String mapCode, String layerCode) {
+    public Map(String mapCode, String layerNo, int floorNo) {
         this.mapCode = mapCode;
-        this.layerCode = layerCode;
+        this.layerNo = layerNo;
+        this.floorNo = floorNo;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.crodi.sevice;
+package com.crodi.base.sevice;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -31,8 +31,8 @@ public class ContainerService implements ContainerApi {
     public void deleteContainer(Container container) {
         Wrapper<Container> wrapper = new LambdaQueryWrapper<Container>()
                 .eq(Container::getContainerCode, container.getContainerCode())
-                .eq(Container::isDeleted, false)
-                .eq(Container::isActive, true);
+                .eq(Container::getDeleted, false)
+                .eq(Container::getActive, true);
         containerMapper.update(container, wrapper);
     }
 
@@ -40,8 +40,8 @@ public class ContainerService implements ContainerApi {
     public void updateContainer(Container container) {
         Wrapper<Container> wrapper = new LambdaQueryWrapper<Container>()
                 .eq(Container::getContainerCode, container.getContainerCode())
-                .eq(Container::isDeleted, false)
-                .eq(Container::isActive, true);
+                .eq(Container::getDeleted, false)
+                .eq(Container::getActive, true);
         containerMapper.update(container, wrapper);
     }
 
@@ -49,8 +49,8 @@ public class ContainerService implements ContainerApi {
     public Container getContainer(String nodeCode) {
         Wrapper<Container> wrapper = new LambdaQueryWrapper<Container>()
                 .eq(Container::getNodeCode, nodeCode)
-                .eq(Container::isDeleted, false)
-                .eq(Container::isActive, true);
+                .eq(Container::getDeleted, false)
+                .eq(Container::getActive, true);
         return containerMapper.selectOne(wrapper);
 
     }
@@ -59,8 +59,8 @@ public class ContainerService implements ContainerApi {
     public List<Container> getAllContainers(String mapCode) {
         Wrapper<Container> wrapper = new LambdaQueryWrapper<Container>()
                 .eq(Container::getMapCode, mapCode)
-                .eq(Container::isDeleted, false)
-                .eq(Container::isActive, true);
+                .eq(Container::getDeleted, false)
+                .eq(Container::getActive, true);
         return containerMapper.selectList(wrapper);
     }
 }
