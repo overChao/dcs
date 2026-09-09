@@ -42,10 +42,6 @@ public class MapInitService {
 
     public List<Map> initMap(String businessArea, int layerSize) {
         List<Map> mapList = Lists.newArrayList();
-        for (int i = 1; i <= layerSize; i++) {
-            String mapCode = default_prefix + businessArea + "_" + i;
-            mapList.add(new Map(mapCode, String.valueOf(i)));
-        }
         return mapList;
     }
 
