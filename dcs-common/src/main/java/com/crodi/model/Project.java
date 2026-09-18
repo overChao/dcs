@@ -1,8 +1,6 @@
 package com.crodi.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -18,8 +16,7 @@ import java.io.Serializable;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("dcs_project")
-public class Project extends BaseEntity implements Serializable {
+public class Project implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -32,6 +29,9 @@ public class Project extends BaseEntity implements Serializable {
 
     // 项目描述
     private String projectDesc;
+
+    @TableField(value = "is_active")
+    private Boolean active;
 
 
 }

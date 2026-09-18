@@ -1,7 +1,6 @@
 package com.crodi.model.graph;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.crodi.model.BaseEntity;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -15,14 +14,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@TableName("dcs_map")
-public class Map extends BaseEntity {
+public class Map {
 
     // 仓库id
     private String warehouseId;
 
-    // 图编码
+    // 图编码 例如：CBK-FLOOR-01
     private String mapCode;
 
     // 图名称
@@ -34,10 +31,7 @@ public class Map extends BaseEntity {
     // 楼层
     private int floorNo;
 
-    public Map(String mapCode, String layerNo, int floorNo) {
-        this.mapCode = mapCode;
-        this.layerNo = layerNo;
-        this.floorNo = floorNo;
-    }
+    @TableField(value = "is_active")
+    private Boolean active;
 
 }

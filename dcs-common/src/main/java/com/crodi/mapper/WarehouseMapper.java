@@ -1,7 +1,7 @@
 package com.crodi.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.crodi.model.Warehouse;
+import com.crodi.model.entity.WarehousePO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -10,6 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @Description: TODO
  **/
 @Mapper
-public interface WarehouseMapper extends BaseMapper<Warehouse> {
+public interface WarehouseMapper extends BaseMapper<WarehousePO> {
 
 }

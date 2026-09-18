@@ -1,9 +1,12 @@
 package com.crodi.model.graph;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.crodi.model.BaseEntity;
+import com.crodi.util.NodeCodeUtil;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -16,7 +19,9 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("dcs_node")
-public class Node extends BaseEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Node {
 
     // 仓库id
     private String warehouseId;
@@ -50,5 +55,31 @@ public class Node extends BaseEntity {
 
     // 关联设备类型
     private List<String> deviceTypes;
+
+
+    public Node(String warehouseId, String mapCode, int x, int y, int z, int cowNo, int colNo, int levelNo) {
+        this.warehouseId = warehouseId;
+        this.mapCode = mapCode;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.cowNo = cowNo;
+        this.colNo = colNo;
+        this.levelNo = levelNo;
+
+        this.nodeCode = NodeCodeUtil.generate(this);
+    }
+
+    public Node(String warehouseId, String mapCode, int cowNo, int colNo, int levelNo) {
+        this.warehouseId = warehouseId;
+        this.mapCode = mapCode;
+
+        this.cowNo = cowNo;
+        this.colNo = colNo;
+        this.levelNo = levelNo;
+
+        this.nodeCode = NodeCodeUtil.generate(this);
+    }
+
 
 }

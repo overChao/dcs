@@ -7,11 +7,13 @@ import com.crodi.base.MapApi;
 import com.crodi.exception.DcsSystemException;
 import com.crodi.exception.ExceptionConst;
 import com.crodi.mapper.MapMapper;
+import com.crodi.model.entity.MapPO;
 import com.crodi.model.graph.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,16 +31,16 @@ public class MapService implements MapApi {
 
     @Override
     public List<Map> getWarehouseMaps(String warehouseId) {
-        Wrapper<Map> wrapper = new LambdaQueryWrapper<Map>()
-                .eq(Map::getWarehouseId, warehouseId)
-                .eq(Map::getDeleted, Boolean.FALSE);
+        Wrapper<MapPO> wrapper = new LambdaQueryWrapper<MapPO>()
+                .eq(MapPO::getWarehouseId, warehouseId)
+                .eq(MapPO::getDeleted, Boolean.FALSE);
         try {
-            List<Map> maps = mapMapper.selectList(wrapper);
+            List<MapPO> maps = mapMapper.selectList(wrapper);
 
             if (maps == null || maps.isEmpty()) {
                 throw new DcsSystemException(ExceptionConst.MAP_NOT_EXIST);
             }
-            return maps;
+            return new ArrayList<>(maps);
         } catch (Exception e) {
             log.error(ExceptionConst.MAP_SELECT_FAILED, e);
             if (e instanceof DcsSystemException) {
@@ -49,9 +51,9 @@ public class MapService implements MapApi {
 
     @Override
     public Map getWarehouseMap(String mapCode) {
-        Wrapper<Map> wrapper = new LambdaQueryWrapper<Map>()
-                .eq(Map::getMapCode, mapCode)
-                .eq(Map::getDeleted, Boolean.FALSE);
+        Wrapper<MapPO> wrapper = new LambdaQueryWrapper<MapPO>()
+                .eq(MapPO::getMapCode, mapCode)
+                .eq(MapPO::getDeleted, Boolean.FALSE);
         try {
             Map map = mapMapper.selectOne(wrapper);
             if (map == null) {
@@ -71,7 +73,7 @@ public class MapService implements MapApi {
         try {
             validateWarehouseMap(map);
 
-            mapMapper.insert(map);
+            mapMapper.insert((MapPO) map);
         } catch (Exception e) {
             log.error(ExceptionConst.MAP_CREATE_FAILED, e);
             if (e instanceof DcsSystemException) {
@@ -85,10 +87,10 @@ public class MapService implements MapApi {
     public void deleteWarehouseMap(String mapCode) {
 
         try {
-            LambdaUpdateWrapper<Map> wrapper = new LambdaUpdateWrapper<Map>()
-                    .eq(Map::getMapCode, mapCode)
-                    .eq(Map::getDeleted, Boolean.FALSE)
-                    .set(Map::getDeleted, Boolean.TRUE);
+            LambdaUpdateWrapper<MapPO> wrapper = new LambdaUpdateWrapper<MapPO>()
+                    .eq(MapPO::getMapCode, mapCode)
+                    .eq(MapPO::getDeleted, Boolean.FALSE)
+                    .set(MapPO::getDeleted, Boolean.TRUE);
             mapMapper.update(wrapper);
         } catch (Exception e) {
             log.error(ExceptionConst.MAP_DELETE_FAILED, e);
@@ -108,27 +110,29 @@ public class MapService implements MapApi {
                 throw new DcsSystemException(ExceptionConst.REQUEST_PARAM_NOT_NULL);
             }
 
-            if (map.getMapCode() == null) {
+            MapPO mapPO = (MapPO) map;
+
+            if (mapPO.getMapCode() == null) {
                 throw new DcsSystemException(ExceptionConst.MAP_CODE_NOT_NULL);
             }
 
-            LambdaUpdateWrapper<Map> wrapper = new LambdaUpdateWrapper<Map>()
-                    .eq(Map::getMapCode, map.getMapCode())
-                    .eq(Map::getDeleted, Boolean.FALSE);
+            LambdaUpdateWrapper<MapPO> wrapper = new LambdaUpdateWrapper<MapPO>()
+                    .eq(MapPO::getMapCode, mapPO.getMapCode())
+                    .eq(MapPO::getDeleted, Boolean.FALSE);
 
-            if (Objects.nonNull(map.getMapName())) {
-                wrapper.set(Map::getMapName, map.getMapName());
+            if (Objects.nonNull(mapPO.getMapName())) {
+                wrapper.set(MapPO::getMapName, mapPO.getMapName());
             }
 
-            if (Objects.nonNull(map.getLayerNo())) {
-                wrapper.set(Map::getLayerNo, map.getLayerNo());
+            if (Objects.nonNull(mapPO.getLayerNo())) {
+                wrapper.set(MapPO::getLayerNo, mapPO.getLayerNo());
             }
 
-            if (Objects.nonNull(map.getActive())) {
-                wrapper.set(Map::getActive, map.getActive());
+            if (Objects.nonNull(mapPO.getActive())) {
+                wrapper.set(MapPO::getActive, mapPO.getActive());
             }
 
-            mapMapper.update(map, wrapper);
+            mapMapper.update(mapPO, wrapper);
 
         } catch (Exception e) {
             log.error(ExceptionConst.MAP_UPDATE_FAILED, e);

@@ -1,7 +1,7 @@
 package com.crodi.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.crodi.model.graph.Map;
+import com.crodi.model.entity.MapPO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -10,6 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @Description: TODO
  **/
 @Mapper
-public interface MapMapper extends BaseMapper<Map> {
+public interface MapMapper extends BaseMapper<MapPO> {
 
 }

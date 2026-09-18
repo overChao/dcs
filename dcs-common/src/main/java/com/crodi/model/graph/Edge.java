@@ -1,7 +1,7 @@
 package com.crodi.model.graph;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.crodi.model.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,8 +12,7 @@ import lombok.EqualsAndHashCode;
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("dcs_edge")
-public class Edge extends BaseEntity {
+public class Edge {
 
     private String mapCode;
 
@@ -26,5 +25,8 @@ public class Edge extends BaseEntity {
     private int direction;
 
     private int edgeType;
+
+    @TableField(value = "is_active")
+    private Boolean isActive;
 
 }

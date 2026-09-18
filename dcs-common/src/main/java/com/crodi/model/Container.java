@@ -9,10 +9,9 @@ import lombok.EqualsAndHashCode;
  * @Date: 2026/7/28 16:21
  * @Description: TODO
  **/
-@EqualsAndHashCode(callSuper = true)
+
 @Data
-@TableName("dcs_container")
-public class Container extends BaseEntity {
+public class Container {
 
     // 容器编码
     private String containerCode;

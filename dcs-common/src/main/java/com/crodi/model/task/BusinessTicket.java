@@ -1,6 +1,5 @@
 package com.crodi.model.task;
 
-import com.crodi.model.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,7 +13,7 @@ import java.util.Map;
  **/
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class BusinessTicket extends BaseEntity {
+public class BusinessTicket {
 
     // 业务id
     private String businessId;

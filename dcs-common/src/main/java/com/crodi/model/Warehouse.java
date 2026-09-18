@@ -1,8 +1,7 @@
 package com.crodi.model;
 
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * @Author: crodi.zhang
@@ -11,14 +10,15 @@ import lombok.EqualsAndHashCode;
  **/
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-@TableName("dcs_warehouse")
-public class Warehouse extends BaseEntity {
+public class Warehouse {
 
     private String warehouseId;
 
     private String warehouseName;
 
     private String projectId;
+
+    @TableField(value = "is_active")
+    private Boolean active;
 
 }

@@ -7,10 +7,12 @@ import com.crodi.exception.DcsSystemException;
 import com.crodi.exception.ExceptionConst;
 import com.crodi.mapper.WarehouseMapper;
 import com.crodi.model.Warehouse;
+import com.crodi.model.entity.WarehousePO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,9 +30,9 @@ public class WarehouseService implements WarehouseApi {
 
     @Override
     public Warehouse getWarehouseById(String warehouseId) {
-        Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
-                .eq(Warehouse::getWarehouseId, warehouseId)
-                .eq(Warehouse::getDeleted, Boolean.FALSE);
+        Wrapper<WarehousePO> wrapper = new LambdaQueryWrapper<WarehousePO>()
+                .eq(WarehousePO::getWarehouseId, warehouseId)
+                .eq(WarehousePO::getDeleted, Boolean.FALSE);
         try {
             Warehouse warehouse = warehouseMapper.selectOne(wrapper);
             if (warehouse == null) {
@@ -51,7 +53,7 @@ public class WarehouseService implements WarehouseApi {
 
             validateWarehouse(warehouse);
 
-            warehouseMapper.insert(warehouse);
+            warehouseMapper.insert((WarehousePO) warehouse);
         } catch (Exception e) {
             log.error(ExceptionConst.WAREHOUSE_CREATE_FAILED, e);
             if (e instanceof DcsSystemException) {
@@ -66,11 +68,11 @@ public class WarehouseService implements WarehouseApi {
         try {
             validateWarehouse(warehouse);
 
-            Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
-                    .eq(Warehouse::getWarehouseId, warehouse.getWarehouseId())
-                    .eq(Warehouse::getDeleted, Boolean.FALSE);
+            Wrapper<WarehousePO> wrapper = new LambdaQueryWrapper<WarehousePO>()
+                    .eq(WarehousePO::getWarehouseId, warehouse.getWarehouseId())
+                    .eq(WarehousePO::getDeleted, Boolean.FALSE);
 
-            warehouseMapper.update(warehouse, wrapper);
+            warehouseMapper.update((WarehousePO) warehouse, wrapper);
         } catch (Exception e) {
             log.error(ExceptionConst.WAREHOUSE_UPDATE_FAILED, e);
             if (e instanceof DcsSystemException) {
@@ -81,10 +83,10 @@ public class WarehouseService implements WarehouseApi {
 
     @Override
     public void deleteWarehouse(String warehouseId) {
-        Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
-                .eq(Warehouse::getWarehouseId, warehouseId)
-                .eq(Warehouse::getDeleted, Boolean.FALSE);
-        Warehouse warehouse = new Warehouse();
+        Wrapper<WarehousePO> wrapper = new LambdaQueryWrapper<WarehousePO>()
+                .eq(WarehousePO::getWarehouseId, warehouseId)
+                .eq(WarehousePO::getDeleted, Boolean.FALSE);
+        WarehousePO warehouse = new WarehousePO();
         warehouse.setDeleted(Boolean.TRUE);
         try {
             warehouseMapper.update(warehouse, wrapper);
@@ -96,15 +98,15 @@ public class WarehouseService implements WarehouseApi {
 
     @Override
     public List<Warehouse> getWarehouseList(String projectId) {
-        Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
-                .eq(Warehouse::getProjectId, projectId)
-                .eq(Warehouse::getDeleted, Boolean.FALSE);
+        Wrapper<WarehousePO> wrapper = new LambdaQueryWrapper<WarehousePO>()
+                .eq(WarehousePO::getProjectId, projectId)
+                .eq(WarehousePO::getDeleted, Boolean.FALSE);
         try {
-            List<Warehouse> warehouseList = warehouseMapper.selectList(wrapper);
+            List<WarehousePO> warehouseList = warehouseMapper.selectList(wrapper);
             if (warehouseList == null || warehouseList.isEmpty()) {
                 throw new DcsSystemException(ExceptionConst.WAREHOUSE_NOT_EXIST);
             }
-            return warehouseList;
+            return new ArrayList<>(warehouseList);
         } catch (Exception e) {
             log.error(ExceptionConst.WAREHOUSE_SELECT_FAILED, e);
             if (e instanceof DcsSystemException) {
@@ -115,13 +117,13 @@ public class WarehouseService implements WarehouseApi {
 
     @Override
     public Warehouse getActiveWarehouse(String projectId) {
-        Wrapper<Warehouse> wrapper = new LambdaQueryWrapper<Warehouse>()
-                .eq(Warehouse::getProjectId, projectId)
-                .eq(Warehouse::getDeleted, Boolean.FALSE)
-                .eq(Warehouse::getActive, Boolean.TRUE);
+        Wrapper<WarehousePO> wrapper = new LambdaQueryWrapper<WarehousePO>()
+                .eq(WarehousePO::getProjectId, projectId)
+                .eq(WarehousePO::getDeleted, Boolean.FALSE)
+                .eq(WarehousePO::getActive, Boolean.TRUE);
         try {
 
-            List<Warehouse> warehouseList = warehouseMapper.selectList(wrapper);
+            List<WarehousePO> warehouseList = warehouseMapper.selectList(wrapper);
 
             if (warehouseList == null || warehouseList.isEmpty()) {
                 throw new DcsSystemException(ExceptionConst.WAREHOUSE_NOT_EXIST);
