@@ -2,24 +2,36 @@ package com.crodi.model;
 
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import lombok.Data;
+/**
+ * @Author: crodi.zhang
+ * @Date: 2026/9/14 10:15
+ * @Description: TODO
+ **/
+public interface BaseEntity {
 
-@Data
-public class BaseEntity {
+    void setCreatedBy(String createdBy);
 
-    private String createdBy;
+    String getCreatedBy();
 
-    private String updatedBy;
+    void setUpdatedBy(String updatedBy);
 
-    private Date createdTime;
+    String getUpdatedBy();
 
-    private Date updatedTime;
+    void setUpdatedTime(Date updatedTime);
 
-    @TableField(value = "is_active")
-    private Boolean active;
+    Date getUpdatedTime();
 
-    @TableField(value = "is_deleted")
-    private Boolean deleted;
+    void setCreatedTime(Date createdTime);
+
+    Date getCreatedTime();
+
+    void setActive(Boolean active);
+
+    Boolean getActive();
+
+    void setDeleted(Boolean deleted);
+
+    Boolean getDeleted();
+
 
 }
