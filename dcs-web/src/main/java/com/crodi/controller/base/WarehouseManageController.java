@@ -3,6 +3,7 @@ package com.crodi.controller.base;
 import com.crodi.base.WarehouseApi;
 import com.crodi.exception.DcsSystemException;
 import com.crodi.model.Warehouse;
+import com.crodi.model.entity.WarehousePO;
 import com.crodi.sys.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class WarehouseManageController {
     private final WarehouseApi warehouseApi;
 
     @PostMapping("createWarehouse")
-    public Result<?> createWarehouse(@RequestBody Warehouse warehouse) {
+    public Result<?> createWarehouse(@RequestBody WarehousePO warehouse) {
         try {
             warehouseApi.saveWarehouse(warehouse);
             return Result.ok();

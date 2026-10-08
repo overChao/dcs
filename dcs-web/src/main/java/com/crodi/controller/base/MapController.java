@@ -1,6 +1,7 @@
 package com.crodi.controller.base;
 
 import com.crodi.base.MapApi;
+import com.crodi.model.entity.MapPO;
 import com.crodi.model.graph.Map;
 import com.crodi.sys.Result;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class MapController {
     private final MapApi mapApi;
 
     @PostMapping("createMap")
-    public Result<?> createMap(@RequestBody Map map) {
+    public Result<?> createMap(@RequestBody MapPO map) {
         try {
             mapApi.saveWarehouseMap(map);
             return Result.ok();
@@ -51,7 +52,7 @@ public class MapController {
     }
 
     @PostMapping("updateMap")
-    public Result<?> updateMaps(@RequestBody Map map) {
+    public Result<?> updateMaps(@RequestBody MapPO map) {
         try {
             mapApi.updateWarehouseMap(map);
             return Result.ok();

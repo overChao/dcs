@@ -3,6 +3,7 @@ package com.crodi.controller.base;
 import com.crodi.base.ProjectApi;
 import com.crodi.exception.DcsSystemException;
 import com.crodi.model.Project;
+import com.crodi.model.entity.ProjectPO;
 import com.crodi.sys.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public class ProjectManageController {
 
 
     @PostMapping("/createProject")
-    public Result<?> createProject(@RequestBody Project project) {
+    public Result<?> createProject(@RequestBody ProjectPO project) {
         try {
             projectApi.createProject(project);
             return Result.ok();
@@ -64,7 +65,7 @@ public class ProjectManageController {
 
 
     @PostMapping("/updateProject")
-    public Result<?> updateProject(@RequestBody Project project) {
+    public Result<?> updateProject(@RequestBody ProjectPO project) {
         try {
             projectApi.updateProject(project);
             return Result.ok();
